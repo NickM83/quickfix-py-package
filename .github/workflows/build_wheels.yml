@@ -8,7 +8,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        python_build: [cp311-manylinux_aarch64]
+        python_build: [cp311-manylinux_aarch64, cp312-manylinux_aarch64]  # Added cp312 for Python 3.12
         os: [ubuntu-latest]
     env:
       CIBW_ARCHS: aarch64
@@ -25,7 +25,7 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.12'  # Changed from 3.11 to 3.12
 
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.17.0
@@ -46,7 +46,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        python_build: [cp311-macosx_arm64]
+        python_build: [cp311-macosx_arm64, cp312-macosx_arm64]  # Added cp312 for Python 3.12
         os: [macos-14]
     env:
       CIBW_ARCHS: 'auto'
@@ -58,7 +58,7 @@ jobs:
       # Used to host cibuildwheel
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.12'  # Changed from 3.11 to 3.12
 
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.17.0
